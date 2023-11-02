@@ -1,5 +1,6 @@
 
 ## 다트 크롤링
+OpenDART API 내의 사업보고서 주요정보란의 데이터를 받아오기 위한 데이터 추출 프로그램입니다.
 
 ### 파일 구조
 ```
@@ -53,14 +54,16 @@ pip install -r requirements.txt
 python filter_csv.py --csv_filename data/2015_2017-상장사.csv --headers 종목코드
 python merge_csv.py --csv_filenames data/2015_2017-상장사.csv data/2018_2020-상장사.csv
 
-python get_dart_info.py --csv_filename data/상장사-corp_code.csv
+python get_dart_info.py --api 소액주주현황 --csv_filename data/company-{yyyy}-{mm}-{dd}.csv --year 2023 --quarter 2
 python get_executives_api.py --api 임원목록 --csv_filename data/company-{yyyy}-{mm}-{dd}.csv --year 2023 --quarter 2
 python dart_crawler.py --api 임원목록 --csv_filename data/company-{yyyy}-{mm}-{dd}.csv --start_year 2022 --start_quarter 1 --end_year 2023 --end_quarter 2
 ```
 
 ### ERROR
+```
 종목명's data is missing: api response가 정상이 아님 -> 해당 연도, 분기의 데이터 자체에 해당 기업이 없음   
 종목명's data returns None: api response는 정상 -> 해당 연도, 분기의 요청 데이터가 비어 있는 경우
+```
 
-### TODO
-- [ ] 1 혹은 다 여부에 따른 추출 쉽게 조절하게 만들기
+### USES
+- args를 통해 해당하는 func 매칭해서 반환하는 return_api에 원하는 api에 대한 함수 (get~, marshall~) 추가 후 run
