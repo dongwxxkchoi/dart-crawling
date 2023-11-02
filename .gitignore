@@ -1,4 +1,4 @@
-./corp_list/data/*
-./corp_list/__pycache__
-./dart/__pycache__
-./dart/data/*
+corp_list/data/
+corp_list/__pycache__
+dart/__pycache__
+dart/data/
