@@ -31,16 +31,14 @@ crawling/
 ```
 
 ```
-// corp_list
-crawling/dart_crawling.py: dart의 상장 법인 리스트 가져오기
-crawling/kind_crawling.py: Kind의 상장 법인 리스트 가져오기
-make_corp_list.py: 수행 시, 두 데이터를 가져와서 join을 통해 해당 날짜 기준 상장법인 리스트 데이터 생성
+// pandas로 csv 조작 모듈
+extract_year.py: 2015-12-30 -> 2015 추출해서 저장
+filter_csv.py: csv 파일 내에서 특정 헤더만 추출해서 저장
+merge_csv.py: 여러 csv 파일을 하나로 합침
 
-// dart
 get_corpcode_from_dart.py: dart API 요청 보낼 시 필요한 corp_code를 xml 내에서 찾는 모듈
 get_dart_info.py: 소액주주, 자사주, 최대주주 주식 수 등 개별 행에 1개씩 있는 데이터
 get_executives.py: 임원목록, 최대주주현황, 타법인출자현황 등 개별 행에 여러 개씩 있는 데이터를 연도, 분기별로 크롤링
-
 dart_crawler.py: dart api crawling 최상위 기능, 기간을 지정해 기간 별 크롤링 가능
 ```
 
@@ -53,10 +51,6 @@ pip install -r requirements.txt
 ### RUN
 
 ```bash
-# corp_list
-python make_corp_list.py # 수행 시, 해당 날짜 기준 상장법인 리스트 데이터 생성
-
-# dart
 python filter_csv.py --csv_filename data/2015_2017-상장사.csv --headers 종목코드
 python merge_csv.py --csv_filenames data/2015_2017-상장사.csv data/2018_2020-상장사.csv
 
