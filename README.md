@@ -66,4 +66,5 @@ python dart_crawler.py --api 임원목록 --csv_filename data/company-{yyyy}-{mm
 ```
 
 ### USES
-- args를 통해 해당하는 func 매칭해서 반환하는 return_api에 원하는 api에 대한 함수 (get~, marshall~) 추가 후 run
+- args를 통해 해당하는 func 매칭해서 반환하는 return_api에 원하는 api에 대한 함수 (get~, marshall~) 추가 후 run  
+- root 디렉토리에 config.json 또는 환경변수로 API_KEY 추가해서 사용 가능
