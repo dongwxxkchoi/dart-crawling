@@ -21,10 +21,13 @@ crawling/
     │   ├── get_dart_info.py  
     │   ├── get_executives.py  
     │   ├── utils/  
+    │   │   ├── extract_year.py  
+    │   │   ├── filter_csv.py  
+    │   │   ├── merge_csv.py  
     │   │   ├── utils.py  
-    │   ├── data/ # dart/dart_crawler.py 실행 시 폴더 및 하위 데이터들 생성  
+    │   ├── data/ # dart/dart_crawler.py 실행 시 폴더 및 하위 데이터들 생성
+    │   │   ├── 임원목록/ # example
 ```
-
 
 ```
 // pandas로 csv 조작 모듈
@@ -35,12 +38,8 @@ merge_csv.py: 여러 csv 파일을 하나로 합침
 get_corpcode_from_dart.py: dart API 요청 보낼 시 필요한 corp_code를 xml 내에서 찾는 모듈
 get_dart_info.py: 소액주주, 자사주, 최대주주 주식 수 등 개별 행에 1개씩 있는 데이터
 get_executives.py: 임원목록, 최대주주현황, 타법인출자현황 등 개별 행에 여러 개씩 있는 데이터를 연도, 분기별로 크롤링
-
-dart_crawler.py: dart api crawling 최상위, 기간을 지정해 기간 별 크롤링 가능
-
-
+dart_crawler.py: dart api crawling 최상위 기능, 기간을 지정해 기간 별 크롤링 가능
 ```
-
 
 ### install
 ```bash
@@ -58,6 +57,10 @@ python get_dart_info.py --csv_filename data/상장사-corp_code.csv
 python get_executives_api.py --api 임원목록 --csv_filename data/company-{yyyy}-{mm}-{dd}.csv --year 2023 --quarter 2
 python dart_crawler.py --api 임원목록 --csv_filename data/company-{yyyy}-{mm}-{dd}.csv --start_year 2022 --start_quarter 1 --end_year 2023 --end_quarter 2
 ```
+
+### ERROR
+종목명's data is missing: api response가 정상이 아님 -> 해당 연도, 분기의 데이터 자체에 해당 기업이 없음   
+종목명's data returns None: api response는 정상 -> 해당 연도, 분기의 요청 데이터가 비어 있는 경우
 
 ### TODO
 - [ ] 1 혹은 다 여부에 따른 추출 쉽게 조절하게 만들기
