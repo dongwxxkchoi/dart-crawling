@@ -3,14 +3,20 @@ import xml.etree.ElementTree as ET
 import asyncio
 import csv
 import os
+import json
 import pandas as pd
+
 
 API_URL = 'https://opendart.fss.or.kr/api'
 
-# API_KEY = "751ef3ce2f3fbf0f8574e9bdbe6a3a1f3a5f96be" # 동욱
-# API_KEY = "75b524953cd1970544a824b72979ce2c79d92e74" # 원민
-API_KEY = "31360f2f08cce6067efc45d644823d3a6cd9b20e" # 준호
-# API_KEY = "5eeaf000d2cb1a1aa7ba369d5b9f2a76957d97b6" # 순환
+if os.path.exists('../config.json'):
+    with open('../config.json', 'r') as file:
+        config_data = json.load(file)
+
+    API_KEY = config_data['API_KEY']
+else:
+    API_KEY = os.environ.get('API_KEY')
+
 
 # xml 열기
 def open_xml(filename):
@@ -133,6 +139,7 @@ def list_to_csv(results: list[dict], new_filename: str):
         writer.writeheader()
         for row in results:
             writer.writerow(row)
+
 
 def get_corp_len(csv_filename):
     csv_filename = len(os.path.join("../corp_list/data", csv_filename))

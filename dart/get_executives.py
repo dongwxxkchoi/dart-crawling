@@ -1,6 +1,6 @@
 import argparse
 import asyncio
-from dart.utils.utils import get_new_csv_filename, list_to_csv, request_to_dart, iterate_csv
+from utils.utils import get_new_csv_filename, list_to_csv, request_to_dart, iterate_csv
 import os
 
 def copied_list_of_dicts(list_of_dicts: list[dict]):

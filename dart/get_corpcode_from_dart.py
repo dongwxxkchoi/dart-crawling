@@ -1,8 +1,7 @@
 import argparse
 import csv
 
-from utils import get_new_csv_filename, list_to_csv, open_xml
-
+from utils.utils import get_new_csv_filename, list_to_csv, open_xml
 
 def find_corp_by_stock_code(xml_root, stock_code) -> dict:
     # xml에서 list tag iterate

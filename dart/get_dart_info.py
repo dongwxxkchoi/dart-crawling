@@ -1,9 +1,7 @@
 import argparse
-from dart.utils.utils import get_new_csv_filename, request_to_dart, iterate_csv, list_to_csv
+from utils.utils import get_new_csv_filename, request_to_dart, iterate_csv, list_to_csv
 import asyncio
 
-# API_KEY = ""
-API_URL = 'https://opendart.fss.or.kr/api'
 
 
 def get_dict_by_key(response: list[dict], **kwargs) -> dict:

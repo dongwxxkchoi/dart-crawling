@@ -1,7 +1,7 @@
 import argparse
 import pandas as pd
 
-from utils import get_new_csv_filename
+from dart.utils.utils import get_new_csv_filename
 
 
 def merge_csv(filenames):

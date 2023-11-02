@@ -2,3 +2,5 @@ corp_list/data/
 corp_list/__pycache__
 dart/__pycache__
 dart/data/
+dart/api_keys.txt
+dart/config.json

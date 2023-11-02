@@ -2,13 +2,24 @@ import zipfile
 import requests
 import xml.etree.ElementTree as elemTree
 import pandas as pd
+import os
+import json
 
 from utils import get_file_path
 
 def dart_crawling():
-    URL = "https://opendart.fss.or.kr/api/corpCode.xml"
-    KEY = "751ef3ce2f3fbf0f8574e9bdbe6a3a1f3a5f96be"
-    response = requests.get(f"{URL}?crtfc_key={KEY}")
+    API_URL = "https://opendart.fss.or.kr/api/corpCode.xml"
+
+    if os.path.exists('../config.json'):
+        with open('../config.json', 'r') as file:
+            config_data = json.load(file)
+
+        API_KEY = config_data['API_KEY']
+    else:
+        API_KEY = os.environ.get('API_KEY')
+
+
+    response = requests.get(f"{API_URL}?crtfc_key={API_KEY}")
 
     file_path = get_file_path(folder='data', file_name='dart-company-', file_ext='.zip')
     print("Crawling DART corp datas...")
