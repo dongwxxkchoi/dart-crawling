@@ -2,6 +2,7 @@ import argparse
 import asyncio
 from utils.utils import get_new_csv_filename, list_to_csv, request_to_dart, iterate_csv
 import os
+import json
 
 def copied_list_of_dicts(list_of_dicts: list[dict]):
     copied_list_of_dicts = list_of_dicts.copy()
@@ -82,6 +83,12 @@ def marshall_investment(response):
                      '기말 잔액 장부 가액': element['trmend_blce_acntbk_amount'],
                      '최근 사업 연도 재무 현황 총 자산': element['recent_bsns_year_fnnr_sttus_tot_assets'],
                      '최근 사업 연도 재무 현황 당기 순이익': element['recent_bsns_year_fnnr_sttus_thstrm_ntpf']}, response))
+
+def marshall_datas(api, response):
+    response = copied_list_of_dicts(response)
+    with open('../api_info.json', 'r') as f:
+        json_data = json.load(f)
+    print(json.dumps(json_data[api]))
 
 
 # 임원 현황
