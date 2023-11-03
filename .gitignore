@@ -1,6 +1,7 @@
 corp_list/data/
 corp_list/__pycache__
 dart/__pycache__
+dart/utils/__pycache__
 dart/data/
 api_keys.txt
 config.json

@@ -2,8 +2,8 @@ import pandas as pd
 from datetime import datetime
 import os
 
-from corp_list.crawling.dart_crawling import dart_crawling
-from corp_list.crawling.kind_crawling import kind_crawling
+from crawling.dart_crawling import dart_crawling
+from crawling.kind_crawling import kind_crawling
 
 
 def load_datas():
@@ -33,13 +33,14 @@ def df_to_csv(df):
 
     df.to_csv(file_path, encoding='utf-8', index=False)
 
-def main():
+def make_corp_list():
     kind_crawling()
     dart_crawling()
     kind_df, dart_df = load_datas()
     joined_df = join_datas(kind_df, dart_df)
     df_to_csv(joined_df)
+    return True
 
 if __name__ == "__main__":
-    main()
+    make_corp_list()
     print("corp list generated")

@@ -30,9 +30,9 @@ def dart_crawling():
             f.write(response.content)
         f.close()
 
-
-    with zipfile.ZipFile(file_path, 'r') as zip_ref:
-        zip_ref.extractall('data')
+    os.system("unzip "+file_path)
+    # with zipfile.ZipFile(file_path, 'r') as zip_ref:
+    #     zip_ref.extractall('data')
 
     tree = elemTree.parse('data/CORPCODE.xml')
 

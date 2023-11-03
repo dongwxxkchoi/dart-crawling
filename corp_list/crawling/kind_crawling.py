@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+
 from utils import get_file_path
 
 def kind_crawling():
@@ -34,7 +35,7 @@ def kind_crawling():
 
     #write CSV
     file_path = get_file_path(folder='data', file_name='kind-company-', file_ext='.csv')
-
+    
     with open(file=file_path, mode='w', encoding='utf-8-sig', newline='') as f:
         print("Crawling KIND corp datas...")
         csv_f = csv.writer(f)
